@@ -1,7 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {tokenReducer, tokenMiddleware} from './tokenReducer';
+import {tokenReducer, tokenMiddleware} from './token/tokenReducer';
 import {authReducer} from './auth/authReducer';
 import {codeReducer} from './codeReducer';
+import thunk from 'redux-thunk';
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,5 @@ export const store = configureStore({
     auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(tokenMiddleware),
+    getDefaultMiddleware().concat(tokenMiddleware, thunk),
 });

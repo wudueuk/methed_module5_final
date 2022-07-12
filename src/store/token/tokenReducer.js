@@ -1,4 +1,4 @@
-import {setToken} from '../api/token';
+import {setToken} from '../../api/token';
 
 const initialState = {
   token: '',
@@ -32,14 +32,12 @@ export const tokenMiddleware = store => next => (action) => {
 export const tokenReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_TOKEN:
-      setToken(action.token);
       return {
         ...state,
         token: action.token,
       };
 
     case DELETE_TOKEN:
-      setToken('');
       return {
         ...state,
         token: '',

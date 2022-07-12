@@ -3,10 +3,16 @@ const initialState = {
 };
 
 const UPDATE_CODE = 'GET_CODE';
+const CLEAR_CODE = 'CLEAR_CODE';
 
 export const updateCode = code => ({
   type: UPDATE_CODE,
   code,
+});
+
+export const clearCode = () => ({
+  type: CLEAR_CODE,
+  code: false,
 });
 
 export const codeReducer = (state = initialState, action) => {
@@ -14,7 +20,13 @@ export const codeReducer = (state = initialState, action) => {
     case UPDATE_CODE:
       return {
         ...state,
-        token: action.code,
+        code: action.code,
+      };
+
+    case CLEAR_CODE:
+      return {
+        ...state,
+        code: action.code,
       };
 
     default:
