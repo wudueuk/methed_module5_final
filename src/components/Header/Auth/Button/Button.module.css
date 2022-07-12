@@ -1,0 +1,15 @@
+.logo {
+  margin-left: 30px;
+}
+
+.button {
+  background: transparent;
+  color: white;
+  border: 0px;
+  padding: 5px;
+}
+
+.image {
+  width: 32px;
+  height: 32px;
+}
