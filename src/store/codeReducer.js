@@ -2,7 +2,7 @@ const initialState = {
   code: false,
 };
 
-const UPDATE_CODE = 'GET_CODE';
+const UPDATE_CODE = 'UPDATE_CODE';
 const CLEAR_CODE = 'CLEAR_CODE';
 
 export const updateCode = code => ({

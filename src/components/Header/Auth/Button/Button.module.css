@@ -3,13 +3,47 @@
 }
 
 .button {
+  display: flex;
+  align-items: center;
   background: transparent;
   color: white;
   border: 0px;
   padding: 5px;
 }
 
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.exit {
+  margin-top: 5px;
+  padding: 5px 10px;
+  background-color: gold;
+  border-radius: 5px;
+  color: green;
+  border-color: white;
+}
+
+.exit:hover {
+  background-color: brown;
+  color: white;
+}
+
 .image {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
+}
+
+.error {
+  color: red;
+  font-weight: 700;
 }

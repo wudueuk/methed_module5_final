@@ -1,34 +1,39 @@
 import style from './Button.module.css';
 import notLogin from './img/notlogin.svg';
 import {urlAuth} from '../../../../api/auth';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {deleteToken} from '../../../../store/token/tokenReducer';
 import {clearCode} from '../../../../store/codeReducer';
 import {useAuth} from '../../../../hooks/useAuth';
+import AuthLoader from './AuthLoader';
 
 export const Button = () => {
-  const code = useSelector(state => state.code.code);
-  const token = useSelector(state => state.token.token);
   const dispatch = useDispatch();
-  const [auth] = useAuth();
+  const [auth, loading, status, clearAuth] = useAuth();
 
   return (
-    <button className={style.button}>
-      {token ? (
+    <div className={style.button}>
+      {loading ? (<AuthLoader />) : auth.name ? (
         <>
-          <b>{auth.name}</b>
-          <br />
-          <span onClick={() => {
-            dispatch(deleteToken());
-            dispatch(clearCode());
-          }}>Выйти</span>
+          <img className={style.avatar}
+            src={auth['profile_image'].small} alt='Аватар' />
+          <div className={style.user}>
+            <span>{auth.name}</span>
+            <button className={style.exit} onClick={() => {
+              dispatch(deleteToken());
+              clearAuth();
+              dispatch(clearCode());
+            }}>Выйти</button>
+          </div>
         </>
-      ) : !code ? (
+      ) : status === 'err' ? (
+        <span className={style.error}>Ошибка</span>
+      ) : (
         <a href={urlAuth}>
           <img src={notLogin} className={style.image} alt='Войти'
             title='Войти или зарегистироваться' />
         </a>
-      ) : (<></>)}
-    </button>
+      )}
+    </div>
   );
 };

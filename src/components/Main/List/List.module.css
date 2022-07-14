@@ -4,24 +4,21 @@
   padding: 0px 20px;
 }
 
-.list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 100%;
-  gap: 10px;
-}
-
 .end {
   flex-basis: 100%;
   text-align: center;
   margin-bottom: 20px;
 }
 
-.more {
-  background-color: brown;
-  border-color: wheat;
-  color: white;
-  border-radius: 5px;
-  width: 250px;
-  padding: 10px 0px;
+.masonryGrid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -20px;
+  width: auto;
+}
+
+.masonryGridColumn {
+  padding-left: 20px;
+  background-clip: padding-box;
 }

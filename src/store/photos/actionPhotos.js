@@ -5,25 +5,24 @@ import {API_URL, CLIENT_ID} from '../../api/const';
 export const photosRequestAsync = createAsyncThunk(
   'photos/fetch',
   (newPage, {getState}) => {
-    /* const token = getState().token.token; */
     let countPages = getState().photos.countPages;
-    if (newPage && newPage !== '*') {
+    let prevPhotos = [];
+    if (newPage) {
       countPages = newPage;
+      prevPhotos = getState().photos.photos;
     }
 
-    /* const after = getState().photos.after; */
-    /* const status = getState().photos.status; */
-    /* const isLast = getState().photos.isLast; */
-
-    /* if (!token || status === '' || isLast || page === '*') return; */
-
-    return axios.get(`${API_URL}/photos`,
+    return axios(
+      `${API_URL}/photos?per_page=15${newPage ? `&page=${newPage}` : ``}`,
       {
         headers: {
           Authorization: `Client-ID ${CLIENT_ID}`,
         },
       })
-      .then(({data: photos}) => ({photos, countPages}))
+      .then(({data: newPhotos}) => {
+        const photos = [...prevPhotos, ...newPhotos];
+        return {photos, countPages};
+      })
       .catch((err) => ({error: err.toString()}));
   }
 );

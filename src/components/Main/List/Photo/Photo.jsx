@@ -11,10 +11,10 @@ export const Photo = ({photoData}) => {
   /* const userLiked = photoData['liked_by_user']; */
 
   return (
-    <li className={style.photo} id={id}>
+    <div className={style.photo} id={id}>
       <img className={style.image} src={urls.small} alt='' />
       <Likes likes={likes} />
-    </li>
+    </div>
   );
 };
 

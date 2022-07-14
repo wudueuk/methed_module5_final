@@ -9,14 +9,15 @@ export const setToken = token => {
 
 export const getToken = () => {
   let token = '';
+  const dispatch = useDispatch();
 
   if (localStorage.getItem('bearer')) {
     setToken(localStorage.getItem('bearer'));
     token = localStorage.getItem('bearer');
+    dispatch(updateCode(true));
   }
 
   if (location.search.includes('code')) {
-    const dispatch = useDispatch();
     const code = new URLSearchParams(location.search).get('code');
     dispatch(updateCode(code));
     const token = useToken();
