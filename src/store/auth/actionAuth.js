@@ -1,6 +1,6 @@
-/* import {deleteToken} from '../tokenReducer';
 import axios from 'axios';
-import {API_URL} from '../../api/const'; */
+/* import {deleteToken} from '../token/tokenReducer'; */
+import {API_URL, CLIENT_ID} from '../../api/const';
 
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const AUTH_REQUEST_SUCCESS = 'AUTH_REQUEST_SUCCESS';
@@ -31,19 +31,20 @@ export const authRequestAsync = () => (dispatch, getState) => {
 
   dispatch(authRequest());
 
-  /* axios(`${API_URL}/api/v1/me`, {
+  axios.get(`${API_URL}/me`, {
+    params: {
+      client_id: CLIENT_ID,
+    },
     headers: {
-      Authorization: `bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   })
-    .then(({data: {name, icon_img: iconImg}}) => {
-      const img = iconImg.replace(/\?.*$/, '');
-      const data = {name, img};
+    .then(({data}) => {
       dispatch(authRequestSuccess(data));
     })
     .catch(err => {
       console.error(err);
-      dispatch(deleteToken());
+      /* dispatch(deleteToken()); */
       dispatch(authRequestError(err.toString()));
-    }); */
+    });
 };

@@ -4,17 +4,19 @@ import {urlAuth} from '../../../../api/auth';
 import {useSelector, useDispatch} from 'react-redux';
 import {deleteToken} from '../../../../store/token/tokenReducer';
 import {clearCode} from '../../../../store/codeReducer';
+import {useAuth} from '../../../../hooks/useAuth';
 
 export const Button = () => {
   const code = useSelector(state => state.code.code);
   const token = useSelector(state => state.token.token);
   const dispatch = useDispatch();
+  const [auth] = useAuth();
 
   return (
     <button className={style.button}>
       {token ? (
         <>
-          <b>You logined</b>
+          <b>{auth.name}</b>
           <br />
           <span onClick={() => {
             dispatch(deleteToken());

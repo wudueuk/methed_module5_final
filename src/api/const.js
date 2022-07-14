@@ -1,7 +1,7 @@
 export const API_AUTH_URL = 'https://unsplash.com/oauth/authorize?';
 export const API_TOKEN_URL = 'https://unsplash.com/oauth/token';
-export const API_URL = 'https://api.unsplash.com/';
-export const API_OPEN_URL = 'https://unsplash.com/documentation#';
+export const API_URL = 'https://api.unsplash.com';
+export const API_OPEN_URL = 'https://unsplash.com/documentation';
 export const CLIENT_ID = '3OOYwqmZKmjHua8CcjDkzPfQuqRrlLZAd-OhyRsBLRk';
 export const CLIENT_SECRET = '_eWrm-jNdcW1FLSP3DRz2GT0UM0rwP2NJg3WLqfTtDw';
 export const RESPONSE_TYPE = 'code';

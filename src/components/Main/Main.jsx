@@ -1,5 +1,9 @@
 import style from './Main.module.css';
+import List from './List';
+/* import {Routes, Route} from 'react-router-dom'; */
 
 export const Main = () => (
-  <div className={style.main}></div>
+  <main className={style.main}>
+    <List />
+  </main>
 );

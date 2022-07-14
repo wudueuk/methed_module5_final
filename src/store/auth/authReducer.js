@@ -3,7 +3,7 @@ import {
   AUTH_REQUEST,
   AUTH_REQUEST_ERROR,
   AUTH_REQUEST_SUCCESS
-} from './action';
+} from './actionAuth';
 
 const initialState = {
   loading: false,
