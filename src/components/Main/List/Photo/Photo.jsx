@@ -1,15 +1,19 @@
 import style from './Photo.module.css';
 import PropTypes from 'prop-types';
+import Likes from './Likes';
 
 export const Photo = ({photoData}) => {
   const {
     id,
     urls,
+    likes,
   } = photoData;
+  /* const userLiked = photoData['liked_by_user']; */
 
   return (
     <li className={style.photo} id={id}>
-      <img src={urls.small} alt='' />
+      <img className={style.image} src={urls.small} alt='' />
+      <Likes likes={likes} />
     </li>
   );
 };

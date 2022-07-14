@@ -1,5 +1,14 @@
+._container {
+  max-width: 1240px;
+  margin: 0px auto;
+  padding: 0px 20px;
+}
+
 .list {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 100%;
+  gap: 10px;
 }
 
 .end {

@@ -19,12 +19,12 @@ export const List = () => {
   }, [countPages]);
 
   return (
-    <>
+    <div className={style._container}>
       <ul className={style.list}>
         {photos.map(elem => (
           <Photo key={elem.id} photoData={elem} />
         ))}
       </ul>
-    </>
+    </div>
   );
 };
