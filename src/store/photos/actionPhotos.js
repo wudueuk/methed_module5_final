@@ -6,14 +6,10 @@ export const photosRequestAsync = createAsyncThunk(
   'photos/fetch',
   (newPage, {getState}) => {
     let countPages = getState().photos.countPages;
-    let prevPhotos = [];
-    if (newPage) {
-      countPages = newPage;
-      prevPhotos = getState().photos.photos;
-    }
+    const prevPhotos = getState().photos.photos;
 
     return axios(
-      `${API_URL}/photos?per_page=15${newPage ? `&page=${newPage}` : ``}`,
+      `${API_URL}/photos?${countPages > 1 ? `page=${countPages}` : ``}`,
       {
         headers: {
           Authorization: `Client-ID ${CLIENT_ID}`,
@@ -21,6 +17,7 @@ export const photosRequestAsync = createAsyncThunk(
       })
       .then(({data: newPhotos}) => {
         const photos = [...prevPhotos, ...newPhotos];
+        countPages++;
         return {photos, countPages};
       })
       .catch((err) => ({error: err.toString()}));

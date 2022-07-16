@@ -1,4 +1,5 @@
 import style from './Photo.module.css';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Likes from './Likes';
 
@@ -12,9 +13,11 @@ export const Photo = ({photoData}) => {
 
   return (
     <div className={style.photo} id={id}>
-      <img className={style.image} src={urls.small} alt='' />
+      <Link to={`photos/${id}`}>
+        <img className={style.image} src={urls.small} alt='' />
+      </Link>
       <Likes likes={likes} />
-    </div>
+    </div >
   );
 };
 

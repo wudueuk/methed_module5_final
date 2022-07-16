@@ -1,26 +1,25 @@
 import style from './List.module.css';
 import Photo from './Photo';
 import {useEffect, useRef} from 'react';
-import {Outlet} from 'react-router-dom';
 import {photosRequestAsync} from '../../../store/photos/actionPhotos';
 import {useSelector, useDispatch} from 'react-redux';
 import Masonry from 'react-masonry-css';
 
 export const List = () => {
   const photos = useSelector(state => state.photos.photos);
+  const token = useSelector(state => state.token.token);
   const countPages = useSelector(state => state.photos.countPages);
   const endList = useRef(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(photosRequestAsync());
-  }, [countPages]);
+  }, [token]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        const nextPage = countPages + 1;
-        dispatch(photosRequestAsync(nextPage));
+        dispatch(photosRequestAsync());
       }
     }, {
       rootMargin: '100px',
@@ -43,17 +42,17 @@ export const List = () => {
   };
 
   return (
-    <div className={style._container}>
+    <>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className={style.masonryGrid}
-        columnClassName={style.masonryGridColumn} >
-        {photos.map(elem => (
-          <Photo key={elem.id} photoData={elem} />
-        ))}
-        <span ref={endList} />
-        <Outlet />
+        columnClassName={style.masonryGridColumn}>
+        {photos.map(elem => {
+          const id = `${elem.id}${countPages}`;
+          return <Photo key={id} photoData={elem} />;
+        })}
       </Masonry>
-    </div>
+      <span ref={endList} />
+    </>
   );
 };
