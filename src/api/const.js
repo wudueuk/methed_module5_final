@@ -6,5 +6,5 @@ export const CLIENT_ID = '3OOYwqmZKmjHua8CcjDkzPfQuqRrlLZAd-OhyRsBLRk';
 export const CLIENT_SECRET = '_eWrm-jNdcW1FLSP3DRz2GT0UM0rwP2NJg3WLqfTtDw';
 export const RESPONSE_TYPE = 'code';
 export const SCOPE = 'public read_user read_photos write_likes';
-export const REDIRECT_URI = 'http://localhost:3000';
+export const REDIRECT_URI = 'https://methed-module5-final.vercel.app/';
 export const RANDOM_STRING = 'random_string';
