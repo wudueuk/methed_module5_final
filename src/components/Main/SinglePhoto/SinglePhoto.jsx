@@ -72,13 +72,17 @@ export const SinglePhoto = () => {
       {photo && (
         <>
           <img src={photo.urls.regular} className={style.image} />
-          <buttom className={style.likesBody}
-            onClick={photo['liked_by_user'] ? deleteLike : setLike}>
-            <HeartIcon className={photo['liked_by_user'] ?
-              style.redHeart : style.heart} />
-            <span className={style.likes}>{photo.likes}</span>
-          </buttom>
-          <Link to='/'>На главную</Link>
+          <div className={style.footer}>
+            <div className={token ? style.likesBody : style.likesBodyDefault}
+              onClick={token ? photo['liked_by_user'] ?
+                deleteLike : setLike : () => {}}>
+              <HeartIcon className={token ? photo['liked_by_user'] ?
+                style.redHeart : style.heart : style.heart} />
+              <span className={style.likes}>{photo.likes}</span>
+            </div>
+            <Link to='/'>На главную</Link>
+          </div>
+
         </>
       )}
     </div>
