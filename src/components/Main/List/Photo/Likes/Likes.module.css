@@ -1,14 +1,3 @@
-.body {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  width: 45px;
-  height: 45px;
-  text-align: center;
-  color: #fff;
-  transition: scale 0.3s ease 0.3s;
-}
-
 .heart {
   width: 45px;
   height: 45px;

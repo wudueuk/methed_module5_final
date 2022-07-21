@@ -4,11 +4,13 @@ import {useParams, Link} from 'react-router-dom';
 import axios from 'axios';
 import {API_URL, CLIENT_ID} from '../../../api/const';
 import {ReactComponent as HeartIcon} from './img/heart.svg';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {clearPhotos} from '../../../store/photos/photosSlice';
 
 export const SinglePhoto = () => {
   const [photo, setPhoto] = useState(null);
   const token = useSelector(state => state.token.token);
+  const dispatch = useDispatch();
 
   const {id} = useParams();
 
@@ -61,6 +63,7 @@ export const SinglePhoto = () => {
     })
       .then(({data}) => {
         setPhoto(data);
+        dispatch(clearPhotos());
       })
       .catch(err => {
         console.error(err);
