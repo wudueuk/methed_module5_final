@@ -8,10 +8,8 @@ export const Photo = ({photoData}) => {
   const {
     id,
     urls,
-    likes,
     alt_description: alt,
   } = photoData;
-  /* const [loading, setLoading] = useState(true); */
 
   return (
     <>
