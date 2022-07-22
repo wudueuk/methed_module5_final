@@ -1,8 +1,8 @@
-import {useState} from 'react';
+/* import {useState} from 'react'; */
 import style from './Photo.module.css';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Likes from './Likes';
+/* import Likes from './Likes'; */
 
 export const Photo = ({photoData}) => {
   const {
@@ -11,21 +11,14 @@ export const Photo = ({photoData}) => {
     likes,
     alt_description: alt,
   } = photoData;
-  const [loading, setLoading] = useState(true);
+  /* const [loading, setLoading] = useState(true); */
 
   return (
     <>
       <div className={style.photo} id={id}>
         <Link to={`photos/${id}`}>
-          <img src={urls.small} alt={alt} className={style.image}
-            onLoad={() => {
-              setLoading(false);
-            }
-            } />
+          <img src={urls.small} alt={alt} className={style.image} />
         </Link>
-        <div className={style.body}>
-          {loading ? '' : <Likes likes={likes} />}
-        </div>
       </div>
     </>
   );
